@@ -3,6 +3,9 @@
    then loads this file. Section types: kpis, cards, table, steps, links, prose, note.
    To add a page: add an entry to NAV, create data/page-<id>.js and <id>.html. */
 (function () {
+  function getT() { try { return localStorage.getItem('sx-theme') || 'dark'; } catch (e) { return 'dark'; } }
+  function setT(t) { document.documentElement.dataset.theme = t; try { localStorage.setItem('sx-theme', t); } catch (e) {} var b = document.querySelector('.sx-theme'); if (b) b.textContent = t === 'dark' ? '☀ లైట్' : '🌙 డార్క్'; }
+  document.documentElement.dataset.theme = getT();
   var NAV = [
     ['index', 'అవలోకనం', 'index.html'],
     ['karthika', 'కార్తీక పురాణం ప్యాక్', 'karthika.html'],
@@ -20,6 +23,7 @@
     var n = el('nav', 'sx-nav'), i = el('div', 'sx-nav-in');
     var b = link('index.html', 'ధర్మ ప్రచార వేదిక'); b.className = 'sx-brand'; i.appendChild(b);
     NAV.forEach(function (x) { var a = link(x[2], x[1]); a.className = 'sx-l'; if (x[0] === cur) a.setAttribute('aria-current', 'page'); i.appendChild(a); });
+    var tb = el('button', 'sx-theme', getT() === 'dark' ? '☀ లైట్' : '🌙 డార్క్'); tb.type = 'button'; tb.setAttribute('aria-label', 'Theme'); tb.onclick = function () { setT(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'); if (window.dash && window.dash.__redraw) window.dash.__redraw(); }; i.appendChild(tb);
     n.appendChild(i); return n;
   }
   function centerCur() { var a = document.querySelector('.sx-nav [aria-current]'); if (a && a.parentNode.scrollWidth > a.parentNode.clientWidth) a.parentNode.scrollLeft = a.offsetLeft - a.parentNode.clientWidth / 2 + a.offsetWidth / 2; }

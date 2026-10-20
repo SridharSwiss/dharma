@@ -2,6 +2,7 @@
 <html lang="te">
 <head>
 <meta charset="utf-8">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("sx-theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ధర్మ ప్రచార బ్లూప్రింట్ – 6 నెలలు</title>
 <meta name="description" content="సనాతన ధర్మ ప్రచార వేదిక – విజయదశమి 2026 నుండి చైత్ర పౌర్ణమి 2027 వరకు తెలుగు భక్తి యూట్యూబ్ ఛానళ్ల 6 నెలల ప్రణాళిక">
@@ -21,12 +22,12 @@
   --cds-surface-popover:#fff; --cds-border:#e7dfd2; --cds-shadow-popover:0 6px 24px rgba(0,0,0,.12); --cds-text-secondary:#6b6258; --cds-dur-slow:.3s;
   --sv-c1:#c2410c; --sv-c2:#7c3aed; --sv-c3:#0f766e; --sv-c4:#b45309; --sv-c5:#be123c; --sv-c6:#1d4ed8; --sv-c7:#4d7c0f; --sv-c8:#a21caf;
 }
-@media (prefers-color-scheme: dark){:root{
+:root:not([data-theme="light"]){color-scheme:dark;
   --color-fg:#f3ece2; --color-fg-muted:#b3a99c; --color-bg:#16130f; --color-panel:#1f1b16; --color-border-line:#3a332b;
   --color-ok:#6fcf97; --color-warn:#f2a65a; --color-bad:#f87171; --cds-chart-grid:#2c2620; --cds-chart-muted:#6b6258; --cds-chart-reference:#4a4138;
   --cds-surface-popover:#26211b; --cds-border:#3a332b; --cds-text-secondary:#b3a99c;
   --sv-c1:#fb923c; --sv-c2:#a78bfa; --sv-c3:#2dd4bf; --sv-c4:#fbbf24; --sv-c5:#fb7185; --sv-c6:#60a5fa; --sv-c7:#a3e635; --sv-c8:#e879f9;
-}}
+}
 html,body{margin:0;background:var(--color-bg);color:var(--color-fg);}
 #dash-root{max-width:1280px;margin:0 auto;padding:clamp(16px,3vw,40px);box-sizing:border-box;}
 .dash-skeleton{color:transparent!important;background:var(--cds-chart-grid);border-radius:6px;}

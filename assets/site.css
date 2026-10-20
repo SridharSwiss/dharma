@@ -5,13 +5,20 @@
   --ok:#2f7d4f; --warn:#b45309; --bad:#b91c1c; --accent:#c2410c;
   --c1:#c2410c; --c2:#7c3aed; --c3:#0f766e; --c4:#b45309; --c5:#be123c; --c6:#1d4ed8; --c7:#4d7c0f; --c8:#a21caf;
   --r:10px; --shadow:0 6px 24px rgba(0,0,0,.10);
-}
-@media (prefers-color-scheme: dark){:root{
   --fg:#f3ece2; --muted:#b3a99c; --bg:#16130f; --panel:#1f1b16; --line:#3a332b; --soft:#26211b;
   --ok:#6fcf97; --warn:#f2a65a; --bad:#f87171; --accent:#fb923c;
   --c1:#fb923c; --c2:#a78bfa; --c3:#2dd4bf; --c4:#fbbf24; --c5:#fb7185; --c6:#60a5fa; --c7:#a3e635; --c8:#e879f9;
   --shadow:0 6px 24px rgba(0,0,0,.4);
-}}
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  /* light */ --font-sans:"Noto Sans Telugu","Noto Sans Telugu UI","Nirmala UI","Gautami","Kohinoor Telugu",system-ui,sans-serif; --font-serif:"Noto Serif Telugu","Noto Sans Telugu","Nirmala UI","Gautami",Georgia,serif;
+  --fg:#1f1b16; --muted:#6b6258; --bg:#fffdf8; --panel:#ffffff; --line:#e7dfd2; --soft:#f6f0e6;
+  --ok:#2f7d4f; --warn:#b45309; --bad:#b91c1c; --accent:#c2410c;
+  --c1:#c2410c; --c2:#7c3aed; --c3:#0f766e; --c4:#b45309; --c5:#be123c; --c6:#1d4ed8; --c7:#4d7c0f; --c8:#a21caf;
+  
+  color-scheme:light;
+}
 html,body{margin:0;background:var(--bg);color:var(--fg);}
 body{font-family:var(--font-sans);line-height:1.6;}
 a{color:inherit;}
@@ -74,3 +81,4 @@ a{color:inherit;}
 .sx-foot{max-width:1280px;margin:0 auto;padding:16px clamp(16px,3vw,40px) 40px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);}
 .sx-hide{display:none!important;}
 @media print{.sx-nav,.sx-toc,.sx-tools{display:none!important;}.sx-tbox{max-height:none;overflow:visible;}}
+.sx-theme{margin-left:auto;flex:none;font:inherit;font-size:.9rem;cursor:pointer;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
