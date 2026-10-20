@@ -59,7 +59,7 @@ window.dash = (function () {
 })();
 </script>
 <style>
-.sv{font-family:var(--font-anthropic-sans),"Noto Sans Telugu","Mandali","Gautami",sans-serif;color:var(--color-fg);display:flex;flex-direction:column;gap:var(--cds-gap-lg);}
+.sv{font-family:var(--font-anthropic-sans),"Noto Sans Telugu","Nirmala UI","Gautami","Kohinoor Telugu",sans-serif;color:var(--color-fg);display:flex;flex-direction:column;gap:var(--cds-gap-lg);}
 .sv-head h1{font-family:var(--font-anthropic-serif),"Noto Serif Telugu","Noto Sans Telugu",serif;font-weight:400;font-size:var(--cds-font-size-title);margin:0;line-height:1.3;}
 .sv-head p{margin:var(--cds-gap-xs) 0 0;color:var(--color-fg-muted);font-size:var(--cds-font-size-body);line-height:1.6;max-width:70rem;}
 .sv-brand{display:inline-block;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);letter-spacing:.02em;margin-bottom:var(--cds-gap-xs);}
@@ -92,7 +92,7 @@ window.dash = (function () {
 .sv-track{position:relative;height:14px;background:var(--cds-chart-grid);border-radius:7px;}
 .sv-fill{position:absolute;top:0;bottom:0;border-radius:7px;background:var(--c);}
 .sv-num{font-variant-numeric:tabular-nums;color:var(--color-fg-muted);white-space:nowrap;}
-.sv-tl{position:relative;min-height:9rem;}
+.sv-tl{position:relative;min-height:6.5rem;}
 .sv-tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);max-width:16rem;z-index:5;line-height:1.45;}
 .sv-tip .d{color:var(--cds-text-secondary);}
 .sv-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--cds-gap-sm);}
@@ -120,7 +120,7 @@ window.dash = (function () {
 .sv-tbl{width:100%;border-collapse:collapse;font-size:var(--cds-font-size-caption);}
 .sv-tbl th{position:sticky;top:0;background:var(--color-panel);text-align:left;font-weight:var(--cds-font-weight-medium);padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);white-space:nowrap;}
 .sv-tbl th button{font:inherit;background:none;border:0;color:inherit;cursor:pointer;padding:0;}
-.sv-tbl td{padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top;line-height:1.5;}
+.sv-tbl td{min-width:5.5rem;padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top;line-height:1.5;}
 .sv-tbl td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
 .sv-tbl tr.star td{font-weight:var(--cds-font-weight-medium);}
 .sv-st{display:inline-block;padding:0 var(--cds-pad-sm);border-radius:999px;border:1px solid var(--color-border-line);white-space:nowrap;}
@@ -418,7 +418,7 @@ function drawTimeline() {
   leg.replaceChildren(...PHASES.map((p, i) => { const s = el('span'); const d = el('i', 'sv-dot'); d.style.setProperty('--c', colr(i)); s.append(d, document.createTextNode(p)); return s; }));
   if (failBox(box, 'weeks') || failBox(box, 'festivals')) return;
   const weeks = rowsOf('weeks'); const fests = rowsOf('festivals').filter((f) => String(f.event).startsWith('★'));
-  const W = Math.max(280, box.clientWidth || 600), H = 130, m = { l: 8, r: 8, t: 34, b: 30 };
+  const W = Math.max(280, box.clientWidth || 600), H = 96, m = { l: 8, r: 8, t: 34, b: 30 };
   const x = d3.scaleUtc([pd('2026-10-20'), pd('2027-04-21')], [m.l, W - m.r]);
   const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).style('display', 'block').style('overflow', 'visible');
   const tip = el('div', 'sv-tip'); tip.hidden = true;
@@ -623,6 +623,7 @@ function go(tab, link = true) {
   $$('.sv-tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
   $$('.sv-page').forEach((p) => { p.hidden = p.id !== tab; });
   if (link) dash.setLink(tab);
+  const tb = $('.sv-tabs button[aria-selected="true"]'); if (tb) { const st = tb.parentElement; st.scrollLeft = tb.offsetLeft - st.clientWidth / 2 + tb.offsetWidth / 2; }
   DRAW[tab]();
   drawKpis();
 }

@@ -22,7 +22,8 @@
     NAV.forEach(function (x) { var a = link(x[2], x[1]); a.className = 'sx-l'; if (x[0] === cur) a.setAttribute('aria-current', 'page'); i.appendChild(a); });
     n.appendChild(i); return n;
   }
-  window.SX_NAV = nav;
+  function centerCur() { var a = document.querySelector('.sx-nav [aria-current]'); if (a && a.parentNode.scrollWidth > a.parentNode.clientWidth) a.parentNode.scrollLeft = a.offsetLeft - a.parentNode.clientWidth / 2 + a.offsetWidth / 2; }
+  window.SX_NAV = function (cur) { var n = nav(cur); setTimeout(centerCur, 0); return n; };
 
   function searchBox(ph, onInput) { var s = el('input', 'sx-in'); s.type = 'search'; s.placeholder = ph || 'శోధించండి…'; s.addEventListener('input', function () { onInput(s.value.trim()); }); return s; }
 
@@ -92,7 +93,7 @@
   };
 
   function render(P) {
-    document.body.prepend(nav(P.id));
+    document.body.prepend(nav(P.id)); setTimeout(centerCur, 0);
     var root = document.getElementById('sx'); root.classList.add('has-toc');
     var toc = el('aside', 'sx-toc'), main = el('main', 'sx-main');
     var hero = el('header', 'sx-hero'); hero.append(el('div', 'k', P.kicker || 'సనాతన ధర్మ ప్రచార వేదిక'), el('h1', '', P.title)); if (P.lede) hero.append(el('p', '', P.lede)); main.append(hero);

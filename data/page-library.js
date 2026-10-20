@@ -2,7 +2,7 @@ window.PAGE = {
  "id": "library",
  "kicker": "గ్రంథ వనరులు",
  "title": "గ్రంథాలయం – వేదాలు, ఉపనిషత్తులు, పురాణాలు, శంకర వాణి",
- "lede": "98 లింకులు, 9 విభాగాలు. తెలుగు లిపి వనరులు మొదట, తర్వాత ఆంగ్ల అనువాదాలు. V = తెరిచి ధృవీకరించినది, L = ధృవీకరించిన సూచిక పేజీ నుండి, U = ఇంకా ధృవీకరించలేదు.",
+ "lede": "99 లింకులు, 9 విభాగాలు. తెలుగు లిపి వనరులు మొదట, తర్వాత ఆంగ్ల అనువాదాలు. V = తెరిచి ధ్రువీకరించినది, L = ధ్రువీకరించిన సూచిక పేజీ నుండి, U = ఇంకా ధృవీకరించలేదు.",
  "sections": [
   {
    "type": "note",
@@ -38,7 +38,7 @@ window.PAGE = {
       {
        "l": "శ్రీ సూక్తం",
        "u": "https://vignanam.org/telugu/sri-suktam.html",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "నారాయణ సూక్తం",
@@ -63,7 +63,7 @@ window.PAGE = {
       {
        "l": "తైత్తిరీయ సంహిత (స్వర సహితం)",
        "u": "https://sanskritdocuments.org/doc_veda/taittirIyasamhitA.html",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "ఋగ్వేదం – మండలం 1",
@@ -73,7 +73,7 @@ window.PAGE = {
       {
        "l": "sanskritdocuments – తెలుగు వేద సూచిక",
        "u": "https://sanskritdocuments.org/telugu/veda/",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "స్వర సూచిక (తెలుగు)",
@@ -88,7 +88,7 @@ window.PAGE = {
       {
        "l": "Rig-Veda (English, 1896)",
        "u": "https://sacred-texts.com/book/the-rig-veda",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "Sama-Veda (English, 1895)",
@@ -151,9 +151,9 @@ window.PAGE = {
        "v": "L"
       },
       {
-       "l": "Gita Supersite – ఉపనిషత్తులు భాష్య సహితం",
+       "l": "Gita Supersite – ఉపనిషత్తులు వ్యాఖ్యాన సహితం",
        "u": "https://www.gitasupersite.in/",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "Upanishads Part I (Max Müller, SBE)",
@@ -218,7 +218,7 @@ window.PAGE = {
       {
        "l": "ఆంధ్రభారతి – పోతన భాగవతం (TTD 2017)",
        "u": "https://www.andhrabharati.com/itihAsamulu/bhAgavatamu/index.html",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "భాగవత పురాణం (సంస్కృతం)",
@@ -247,8 +247,8 @@ window.PAGE = {
       },
       {
        "l": "Shiva Purana (English, wisdomlib)",
-       "u": "https://www.wisdomlib.org/hinduism/book/the-shiva-purana-english",
-       "v": "U"
+       "u": "https://www.wisdomlib.org/hinduism/book/shiva-purana-english",
+       "v": "V"
       },
       {
        "l": "Vishnu Purana – Wilson 1840",
@@ -263,7 +263,7 @@ window.PAGE = {
       {
        "l": "Markandeya Purana – Pargiter 1904 (PDF)",
        "u": "https://ia600200.us.archive.org/34/items/Bibliotheca_Indica_Series/MarkandeyaPuranaEnglishTranslation-FePargiter1904bis.pdf",
-       "v": "U"
+       "v": "V"
       },
       {
        "l": "వాల్మీకి రామాయణం – Gita Supersite",
@@ -303,7 +303,7 @@ window.PAGE = {
       {
        "l": "వివేకచూడామణి",
        "u": "https://vignanam.org/telugu/viveka-chudamani.html",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "ఆత్మబోధ",
@@ -392,8 +392,8 @@ window.PAGE = {
       },
       {
        "l": "ఆదిత్య హృదయం",
-       "u": "https://vignanam.org/telugu/aaditya-hrudayam.html",
-       "v": "U"
+       "u": "https://vignanam.org/telugu/aditya-hrudayam.html",
+       "v": "V"
       },
       {
        "l": "తిరుప్పావై",
@@ -449,12 +449,12 @@ window.PAGE = {
       {
        "l": "కేదారేశ్వర వ్రతం (HinduPad, హక్కులు రిజర్వ్)",
        "u": "https://hindupad.com/kedareshwara-vratha-vidhanam-vratha-katha-telugu/",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "కార్తీక సోమవార వ్రత మాహాత్మ్యం (HinduPad)",
        "u": "https://hindupad.com/karthika-somavara-vratha-mahatmyam-telugu/",
-       "v": "U"
+       "v": "V"
       },
       {
        "l": "సత్యనారాయణ – ముడి పాఠం",
@@ -469,12 +469,12 @@ window.PAGE = {
       {
        "l": "నవగ్రహ మంత్ర జప ప్రయోగం",
        "u": "https://sanskritdocuments.org/doc_z_misc_navagraha/navagrahamantrajapaprayogaHvedoktasabIja.html",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "మృత్యుంజయ మానస పూజ",
        "u": "https://sanskritdocuments.org/doc_shiva/mrtyumaanasa.html",
-       "v": "L"
+       "v": "V"
       }
      ]
     },
@@ -502,14 +502,14 @@ window.PAGE = {
        "v": "V"
       },
       {
-       "l": "పరమాచార్యులు – మంత్ర నియమాలు (అ. 37)",
+       "l": "పరమాచార్యులు – మంత్రాధికారం, వ్రత నియమాలు (అ. 37)",
        "u": "https://kamakoti.org/hindudharma/part5/chap37.htm",
        "v": "V"
       },
       {
-       "l": "రామకృష్ణ మఠం – ప్రచురణలు",
+       "l": "రామకృష్ణ మఠం హైదరాబాద్ – ప్రచురణలు",
        "u": "https://www.rkmath.org/publications",
-       "v": "L"
+       "v": "V"
       },
       {
        "l": "sanskritdocuments – పునర్వినియోగ నిబంధనలు (FAQ)",
@@ -538,6 +538,11 @@ window.PAGE = {
       },
       {
        "l": "YouTube – Content ID ఎలా పనిచేస్తుంది",
+       "u": "https://support.google.com/youtube/answer/2797370",
+       "v": "V"
+      },
+      {
+       "l": "YouTube – క్లెయిమ్ అంటే ఏమిటి",
        "u": "https://support.google.com/youtube/answer/7002106",
        "v": "V"
       },
