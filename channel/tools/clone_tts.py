@@ -18,6 +18,10 @@ BRIDGE_TEXT = ("నమస్కారం. కార్తీక మాసం శ
                "ఈ నెలలో రోజూ తెల్లవారుజామున ఒక చిన్న దీపం వెలిగిస్తే, ఇల్లంతా ప్రశాంతంగా ఉంటుంది.")
 BRIDGE = os.path.join(VOICE, "bridge_te_v2.wav")
 SR = 24000
+# Telugu reference cut from the clean second sentence of the bridge (14.70-21.05 s): voice from the owner,
+# rhythm and vowel lengths from Telugu. Used for every scene.
+TE_REF = os.path.join(VOICE, "voice_te_ref.wav")
+TE_REF_TEXT = "ఈ నెలలో రోజూ తెల్లవారుజామున ఒక చిన్న దీపం వెలిగిస్తే, ఇల్లంతా ప్రశాంతంగా ఉంటుంది."
 
 MODELS = r"C:\Users\SRIDH\dharma-tts\models"
 
@@ -97,9 +101,10 @@ def main():
     gap = np.zeros(int(SR * 0.28), dtype=np.float32)
     for sc in S["scenes"]:
         if only and sc["id"] not in only: continue
+        if os.path.exists(os.path.join(outdir, sc["id"] + ".wav")): print("skip", sc["id"]); continue  # resume
         chunks = []
         for s in sentences(sc["say"]):
-            chunks += [gen(model, s, BRIDGE, BRIDGE_TEXT), gap]
+            chunks += [gen(model, s, TE_REF, TE_REF_TEXT), gap]
         a = np.concatenate(chunks)
         sf.write(os.path.join(outdir, sc["id"] + ".wav"), a, SR)
         print("scene", sc["id"], round(len(a) / SR, 1), "s", flush=True)
