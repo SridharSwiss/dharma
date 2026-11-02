@@ -15,8 +15,9 @@ import json, os, re, subprocess, sys, shutil
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 FONT_DIR = "/usr/share/fonts/truetype/noto/"
-SERIF_B = FONT_DIR + "NotoSerifTelugu-Bold.ttf"
-SANS = FONT_DIR + "NotoSansTelugu-Regular.ttf"
+_FD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fonts")
+SERIF_B = os.path.join(_FD, "Ramabhadra-Regular.ttf")   # heavy display face for titles (benchmark: Bhakthi TV-style)
+SANS = os.path.join(_FD, "Mandali-Regular.ttf")          # clean body face for subtitles and lists
 SANS_B = FONT_DIR + "NotoSansTelugu-Bold.ttf" if os.path.exists(FONT_DIR + "NotoSansTelugu-Bold.ttf") else SERIF_B
 FPS = 25
 GOLD = (245, 196, 110)
@@ -77,7 +78,7 @@ def overlay(scene, W, H, vertical=False, draft=True):
     if has_list and not vertical:
         y = int(H * 0.13)
         for line in wrap(d, scene["title"], ft, int(W * 0.5)):
-            d.text((pad, y), line, font=ft, fill=GOLD); y += int(ft.size * 1.35)
+            d.text((pad, y), line, font=ft, fill=GOLD, stroke_width=3, stroke_fill=(20, 8, 0)); y += int(ft.size * 1.35)
         y += int(H * 0.02)
         for item in scene["list"]:
             d.ellipse([pad, y + fl.size * 0.45, pad + 12, y + fl.size * 0.45 + 12], fill=GOLD)
@@ -87,9 +88,14 @@ def overlay(scene, W, H, vertical=False, draft=True):
     sub = scene.get("sub")
     bullets = scene.get("bullets") or []
     block = len(lines_t) * ft.size * 1.3 + (fs.size * 1.6 if sub else 0) + len(bullets) * fs.size * 1.5
-    y = (int(H * 0.25) if vertical else int(H * 0.92 - block))
+    y = (int(H * 0.62) if vertical else int(H * 0.92 - block))
+    # soft backdrop so text stays readable over bright art (flames, sky)
+    bw = max([d.textlength(l, font=ft) for l in lines_t] + [d.textlength(sub or "", font=fs)] + [d.textlength(b, font=fs) + fs.size for b in bullets])
+    bk = Image.new("RGBA", (W, H), (0, 0, 0, 0)); bd = ImageDraw.Draw(bk)
+    bd.rounded_rectangle([pad - 24, y - 18, min(W - pad + 24, pad + bw + 28), y + block + 22], radius=18, fill=(8, 5, 2, 150))
+    im = Image.alpha_composite(im, bk); d = ImageDraw.Draw(im)
     for line in lines_t:
-        d.text((pad, y), line, font=ft, fill=GOLD); y += int(ft.size * 1.3)
+        d.text((pad, y), line, font=ft, fill=GOLD, stroke_width=3, stroke_fill=(20, 8, 0)); y += int(ft.size * 1.3)
     if sub:
         for line in wrap(d, sub, fs, maxw):
             d.text((pad, y + 6), line, font=fs, fill=CREAM); y += int(fs.size * 1.5)
@@ -174,7 +180,7 @@ def main():
     bed = os.path.join(work, "drone.wav"); drone(t, bed)
     final = os.path.join(out, S["id"] + ".mp4")
     run(["ffmpeg", "-y", "-loglevel", "error", "-i", joined, "-i", bed, "-filter_complex",
-         "[0:a][1:a]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]",
+         "[0:a][1:a]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-13:TP=-1.5:LRA=11[a]",
          "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", final])
     open(os.path.join(out, S["id"] + ".srt"), "w", encoding="utf-8").write("\n".join(srt))
     open(os.path.join(out, "chapters.txt"), "w", encoding="utf-8").write("\n".join(chapters) + "\n")
@@ -190,7 +196,7 @@ def main():
         bed = os.path.join(work, f"short_{sid}_bed.wav"); drone(min(secs, 58), bed)
         so = os.path.join(out, f"short-{sid}.mp4")
         run(["ffmpeg", "-y", "-loglevel", "error", "-i", clip, "-i", bed, "-filter_complex",
-             "[0:a][1:a]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5[a]",
+             "[0:a][1:a]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-13:TP=-1.5[a]",
              "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", so])
         print(f"short: {so}  {min(secs,58):.1f}s")
 
